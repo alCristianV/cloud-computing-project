@@ -5,7 +5,10 @@ import {
   MONGO_PASSWORD,
   MONGO_PORT,
   MONGO_USER,
-} from '../config/config';
+} from './config/config';
+import router from './routes/userRoutes';
+
+const userRouter = router;
 
 const app = express();
 const port = process.env.PORT || 3000; // default port to listen
@@ -24,11 +27,9 @@ const connectWithRetry = () => {
 
 connectWithRetry();
 
-// define a route handler for the default home page
-app.get('/', (req, res) => {
-  // render the index template
-  res.send('<h1>hello2</h1>');
-});
+app.use(express.json());
+
+app.use('/api/v1/users', userRouter);
 
 // start the express server
 app.listen(port, () => {

@@ -1,7 +1,9 @@
 version: '3'
 services:
-  node-app:
-    build: .
+  users-app:
+    build:
+      dockerfile: Dockerfile
+      context: ./users
     ports:
       - '3000:3000'
     environment:
