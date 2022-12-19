@@ -10,6 +10,7 @@ services:
       - PORT=3000
       - MONGO_USER=root
       - MONGO_PASSWORD=example
+      - SESSION_SECRET=secret
     depends_on:
       - mongo
 
