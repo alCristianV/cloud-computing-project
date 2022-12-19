@@ -1,5 +1,19 @@
 version: '3'
 services:
+  posts-app:
+    build:
+      dockerfile: Dockerfile
+      context: ./posts
+    ports:
+      - '3001:3001'
+    environment:
+      - PORT=3001
+      - MONGO_USER=root
+      - MONGO_PASSWORD=example
+      - MONGO_DBNAME=posts
+    depends_on:
+      - users-app
+
   users-app:
     build:
       dockerfile: Dockerfile
