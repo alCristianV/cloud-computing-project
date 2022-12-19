@@ -1,6 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import {
+  MONGO_DBNAME,
   MONGO_IP,
   MONGO_PASSWORD,
   MONGO_PORT,
@@ -16,7 +17,7 @@ const userRouter = router;
 const app = express();
 const port = process.env.PORT || 3000; // default port to listen
 
-const mongoUrl = `mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_IP}:${MONGO_PORT}/?authSource=admin`;
+const mongoUrl = `mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_IP}:${MONGO_PORT}/${MONGO_DBNAME}?authSource=admin`;
 
 const connectWithRetry = () => {
   mongoose
