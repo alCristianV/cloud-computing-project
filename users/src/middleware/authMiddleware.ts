@@ -1,6 +1,6 @@
 import express from 'express';
 
-const getSession = (req: express.Request, res: express.Response) => {
+export const getSession = (req: express.Request, res: express.Response) => {
   const { user } = req.session;
 
   if (!user) {

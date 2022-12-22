@@ -7,6 +7,9 @@ import {
   MONGO_PORT,
   MONGO_USER,
 } from './config/config';
+import router from './routes/postRoutes';
+
+const postsRouter = router;
 
 const app = express();
 const port = process.env.PORT || 3001; // default port to listen
@@ -24,6 +27,10 @@ const connectWithRetry = () => {
 };
 
 connectWithRetry();
+
+app.use(express.json());
+
+app.use('/api/v1/posts', postsRouter);
 
 // start the express server
 app.listen(port, () => {

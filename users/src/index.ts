@@ -11,6 +11,7 @@ import {
 import router from './routes/userRoutes';
 import session from 'express-session';
 import MongoStore from 'connect-mongo';
+import cors from 'cors';
 
 const userRouter = router;
 
@@ -49,6 +50,8 @@ app.use(
     },
   })
 );
+
+app.use(cors());
 
 app.use(express.json());
 
