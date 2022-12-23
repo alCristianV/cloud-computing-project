@@ -28,6 +28,20 @@ services:
     depends_on:
       - mongo
 
+  comments-app:
+    build:
+      dockerfile: Dockerfile
+      context: ./comments
+    ports:
+      - '3003:3003'
+    environment:
+      - PORT=3003
+      - MONGO_USER=root
+      - MONGO_PASSWORD=example
+      - MONGO_DBNAME=comments
+    depends_on:
+      - mongo
+
   users-app:
     build:
       dockerfile: Dockerfile

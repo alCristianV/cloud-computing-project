@@ -1,20 +1,22 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import {
+  MONGO_DBNAME,
   MONGO_IP,
   MONGO_PASSWORD,
   MONGO_PORT,
   MONGO_USER,
 } from './config/config';
+import commentRoutes from './routes/commentRoutes';
 
 const app = express();
-const port = process.env.PORT || 3000; // default port to listen
+const port = process.env.PORT || 3003; // default port to listen
+
+const mongoUrl = `mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_IP}:${MONGO_PORT}/${MONGO_DBNAME}?authSource=admin`;
 
 const connectWithRetry = () => {
   mongoose
-    .connect(
-      `mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_IP}:${MONGO_PORT}/?authSource=admin`
-    )
+    .connect(mongoUrl)
     .then(() => console.log('succesfully connected to DB'))
     .catch((e) => {
       console.log(e);
@@ -24,11 +26,9 @@ const connectWithRetry = () => {
 
 connectWithRetry();
 
-// define a route handler for the default home page
-app.get('/', (req, res) => {
-  // render the index template
-  res.send('<h1>hello2</h1>');
-});
+app.use(express.json());
+
+app.use('/api/v1/comments', commentRoutes);
 
 // start the express server
 app.listen(port, () => {
