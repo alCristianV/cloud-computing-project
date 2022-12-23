@@ -17,7 +17,7 @@ services:
   likes-app:
     build:
       dockerfile: Dockerfile
-      context: ./lieks
+      context: ./likes
     ports:
       - '3002:3002'
     environment:
