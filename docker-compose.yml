@@ -42,6 +42,15 @@ services:
     depends_on:
       - mongo
 
+  frontend-react-app:
+    build:
+      dockerfile: Dockerfile
+      context: ./frontend/frontend-react
+    ports:
+      - '3006:3006'
+    environment:
+      - PORT=3006
+
   users-app:
     build:
       dockerfile: Dockerfile
