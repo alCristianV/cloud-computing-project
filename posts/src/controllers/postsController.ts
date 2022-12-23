@@ -18,6 +18,22 @@ export const getAllPosts = async (
   }
 };
 
+export const getAllUserPosts = async (
+  req: express.Request,
+  res: express.Response
+) => {
+  try {
+    const posts = await Post.find({ ownerUsername: req.params.ownerUsername });
+
+    res
+      .status(200)
+      .json({ status: 'succes', results: posts.length, data: { posts } });
+  } catch (e) {
+    console.error(e);
+    res.status(400).json({ status: 'fail' });
+  }
+};
+
 export const getOnePost = async (
   req: express.Request,
   res: express.Response
@@ -58,6 +74,14 @@ export const updatePost = async (
   res: express.Response
 ) => {
   try {
+    const ownerUsername = req.body.ownerUsername;
+    const user = await axios.get(
+      `http://172.28.192.1:3000/api/v1/users/${ownerUsername}`
+    );
+    if (user.status !== 200) {
+      return res.status(400).json({ status: 'user name does not exist' });
+    }
+
     const post = await Post.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
       runValidators: true,

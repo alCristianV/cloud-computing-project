@@ -12,7 +12,21 @@ services:
       - MONGO_PASSWORD=example
       - MONGO_DBNAME=posts
     depends_on:
-      - users-app
+      - mongo
+
+  likes-app:
+    build:
+      dockerfile: Dockerfile
+      context: ./lieks
+    ports:
+      - '3002:3002'
+    environment:
+      - PORT=3002
+      - MONGO_USER=root
+      - MONGO_PASSWORD=example
+      - MONGO_DBNAME=likes
+    depends_on:
+      - mongo
 
   users-app:
     build:

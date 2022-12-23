@@ -4,6 +4,6 @@ COPY package.json .
 RUN npm install --production
 COPY . ./
 RUN npm run build
-ENV PORT 3000
+ENV PORT 3002
 EXPOSE $PORT
 CMD ["npm", "start"]
