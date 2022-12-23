@@ -1,13 +1,68 @@
 version: '3'
 services:
-  node-app:
-    build: .
+  posts-app:
+    build:
+      dockerfile: Dockerfile
+      context: ./posts
+    ports:
+      - '3001:3001'
+    environment:
+      - PORT=3001
+      - MONGO_USER=root
+      - MONGO_PASSWORD=example
+      - MONGO_DBNAME=posts
+    depends_on:
+      - mongo
+
+  likes-app:
+    build:
+      dockerfile: Dockerfile
+      context: ./likes
+    ports:
+      - '3002:3002'
+    environment:
+      - PORT=3002
+      - MONGO_USER=root
+      - MONGO_PASSWORD=example
+      - MONGO_DBNAME=likes
+    depends_on:
+      - mongo
+
+  comments-app:
+    build:
+      dockerfile: Dockerfile
+      context: ./comments
+    ports:
+      - '3003:3003'
+    environment:
+      - PORT=3003
+      - MONGO_USER=root
+      - MONGO_PASSWORD=example
+      - MONGO_DBNAME=comments
+    depends_on:
+      - mongo
+
+  frontend-react-app:
+    build:
+      dockerfile: Dockerfile
+      context: ./frontend/frontend-react
+    ports:
+      - '3006:3006'
+    environment:
+      - PORT=3006
+
+  users-app:
+    build:
+      dockerfile: Dockerfile
+      context: ./users
     ports:
       - '3000:3000'
     environment:
       - PORT=3000
       - MONGO_USER=root
       - MONGO_PASSWORD=example
+      - MONGO_DBNAME=users
+      - SESSION_SECRET=secret
     depends_on:
       - mongo
 
