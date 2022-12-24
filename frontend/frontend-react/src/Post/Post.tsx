@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./Post.css"
 
 interface IPostProps{
@@ -9,6 +10,9 @@ interface IPostProps{
 }
 
 export const Post = (props: IPostProps) => {
+
+  const [showComments, setShowComments] = useState(false)
+
       return (
         <div className='post'>
           <div className="postWrapper">
@@ -29,10 +33,11 @@ export const Post = (props: IPostProps) => {
                 <span className="postLikeCounter">{props.likesNumber} people like it</span>
               </div>
               <div className="postBottomRight">
-                <span className="postCommenttext">{props.comments.length} comments</span>
+                <span className="postCommenttext" onClick={()=>{setShowComments(!showComments)}}>{props.comments.length} comments</span>
               </div>
             </div>
           </div>
+          {showComments && <div>Show comments</div>}
         </div>
       )
 }
