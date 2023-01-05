@@ -27,7 +27,7 @@ export const AddPost = (props: AddPostProps) => {
       }),
     };
     const response = await fetch(
-      'http://172.24.80.1:3001/api/v1/posts',
+      'http://104.40.210.67:3001/api/v1/posts',
       requestOptions
     );
     const responseStatus = await response.json();

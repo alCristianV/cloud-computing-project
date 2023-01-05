@@ -18,7 +18,7 @@ function App() {
       body: JSON.stringify({ username: userName, password: password }),
     };
     const response = await fetch(
-      'http://172.24.80.1:3000/api/v1/users/auth/login',
+      'http://104.40.210.67:3000/api/v1/users/auth/login',
       requestOptions
     );
     const responseStatus = await response.json();
@@ -38,7 +38,7 @@ function App() {
       body: JSON.stringify({ username: userName, password: password }),
     };
     const response = await fetch(
-      'http://172.24.80.1:3000/api/v1/users/auth/signUp',
+      'http://104.40.210.67:3000/api/v1/users/auth/signUp',
       requestOptions
     );
     const responseStatus = await response.json();

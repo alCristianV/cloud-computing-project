@@ -9,7 +9,7 @@ export const getAllPostLikes = async (
   try {
     const postId = req.params.postId;
     const post = await axios.get(
-      `http://172.24.80.1:3001/api/v1/posts/${postId}`
+      `http://104.40.210.67:3001/api/v1/posts/${postId}`
     );
     if (post.status !== 200) {
       return res.status(400).json({ status: 'post does not exist' });
@@ -32,7 +32,7 @@ export const createLike = async (
   try {
     const postId = req.body.postId;
     const post = await axios.get(
-      `http://172.24.80.1:3001/api/v1/posts/${postId}`
+      `http://104.40.210.67:3001/api/v1/posts/${postId}`
     );
     if (post.status !== 200) {
       return res.status(400).json({ status: 'post does not exist' });
@@ -40,7 +40,7 @@ export const createLike = async (
 
     const userName = req.body.userName;
     const user = await axios.get(
-      `http://172.24.80.1:3000/api/v1/users/${userName}`
+      `http://104.40.210.67:3000/api/v1/users/${userName}`
     );
     if (user.status !== 200) {
       return res.status(400).json({ status: 'user does not exist' });

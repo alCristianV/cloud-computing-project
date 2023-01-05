@@ -16,7 +16,7 @@ export const PostList = (props: PostListProps) => {
       headers: { 'Content-Type': 'application/json' },
     };
     const response = await fetch(
-      'http://172.24.80.1:3001/api/v1/posts',
+      'http://104.40.210.67:3001/api/v1/posts',
       requestOptions
     );
     const responseStatus = await response.json();
@@ -41,7 +41,7 @@ export const PostList = (props: PostListProps) => {
       headers: { 'Content-Type': 'application/json' },
     };
     const response = await fetch(
-      `http://172.24.80.1:3003/api/v1/comments/post/${postId}`,
+      `http://104.40.210.67:3003/api/v1/comments/post/${postId}`,
       requestOptions
     );
     const responseStatus = await response.json();
@@ -63,7 +63,7 @@ export const PostList = (props: PostListProps) => {
       }),
     };
     const response = await fetch(
-      `http://172.24.80.1:3003/api/v1/comments`,
+      `http://104.40.210.67:3003/api/v1/comments`,
       requestOptions
     );
     const responseStatus = await response.json();
@@ -82,7 +82,7 @@ export const PostList = (props: PostListProps) => {
       headers: { 'Content-Type': 'application/json' },
     };
     const response = await fetch(
-      `http://172.24.80.1:3002/api/v1/likes/post/${postId}`,
+      `http://104.40.210.67:3002/api/v1/likes/post/${postId}`,
       requestOptions
     );
     const responseStatus = await response.json();
@@ -103,7 +103,7 @@ export const PostList = (props: PostListProps) => {
       }),
     };
     const response = await fetch(
-      `http://172.24.80.1:3002/api/v1/likes`,
+      `http://104.40.210.67:3002/api/v1/likes`,
       requestOptions
     );
     const responseStatus = await response.json();
@@ -120,7 +120,7 @@ export const PostList = (props: PostListProps) => {
       headers: { 'Content-Type': 'application/json' },
     };
     const response = await fetch(
-      `http://172.24.80.1:3001/api/v1/posts/${postId}`,
+      `http://104.40.210.67:3001/api/v1/posts/${postId}`,
       requestOptions
     );
     const responseStatus = await response.json();

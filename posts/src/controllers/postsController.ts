@@ -55,7 +55,7 @@ export const createPost = async (
   try {
     const ownerUsername = req.body.ownerUsername;
     const user = await axios.get(
-      `http://172.24.80.1:3000/api/v1/users/${ownerUsername}`
+      `http://104.40.210.67:3000/api/v1/users/${ownerUsername}`
     );
     if (user.status !== 200) {
       return res.status(400).json({ status: 'user name does not exist' });
@@ -76,7 +76,7 @@ export const updatePost = async (
   try {
     const ownerUsername = req.body.ownerUsername;
     const user = await axios.get(
-      `http://172.24.80.1:3000/api/v1/users/${ownerUsername}`
+      `http://104.40.210.67:3000/api/v1/users/${ownerUsername}`
     );
     if (user.status !== 200) {
       return res.status(400).json({ status: 'user name does not exist' });
