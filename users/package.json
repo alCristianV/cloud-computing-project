@@ -14,6 +14,7 @@
     "@types/node": "^18.11.11",
     "bcryptjs": "^2.4.3",
     "connect-mongo": "^4.6.0",
+    "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "express": "^4.18.2",
     "express-session": "^1.17.3",
@@ -22,6 +23,7 @@
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
+    "@types/cookie-parser": "^1.4.3",
     "@types/cors": "^2.8.13",
     "@types/express-session": "^1.17.5",
     "@typescript-eslint/eslint-plugin": "^5.45.1",

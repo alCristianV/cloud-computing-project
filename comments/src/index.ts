@@ -8,6 +8,7 @@ import {
   MONGO_USER,
 } from './config/config';
 import commentRoutes from './routes/commentRoutes';
+import cors from 'cors';
 
 const app = express();
 const port = process.env.PORT || 3003; // default port to listen
@@ -25,6 +26,8 @@ const connectWithRetry = () => {
 };
 
 connectWithRetry();
+
+app.use(cors({ credentials: true }));
 
 app.use(express.json());
 

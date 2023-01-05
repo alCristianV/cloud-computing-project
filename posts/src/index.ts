@@ -8,6 +8,7 @@ import {
   MONGO_USER,
 } from './config/config';
 import router from './routes/postRoutes';
+import cors from 'cors';
 
 const postsRouter = router;
 
@@ -27,6 +28,8 @@ const connectWithRetry = () => {
 };
 
 connectWithRetry();
+
+app.use(cors({ credentials: true }));
 
 app.use(express.json());
 

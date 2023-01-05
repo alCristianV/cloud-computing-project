@@ -12,6 +12,7 @@ import router from './routes/userRoutes';
 import session from 'express-session';
 import MongoStore from 'connect-mongo';
 import cors from 'cors';
+import cookieParser from 'cookie-parser';
 
 const userRouter = router;
 
@@ -51,7 +52,10 @@ app.use(
   })
 );
 
-app.use(cors());
+app.use(cors({ credentials: true }));
+
+// cookie parser middleware
+app.use(cookieParser());
 
 app.use(express.json());
 
